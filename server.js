@@ -1,13 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const knex = require('knex')({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'zqm',
-    password : '',
-    database : 'imagerecognition'
+    connectionString: process.env.DATABASE_URL,
+    ssl: ture
   }
 });
 
